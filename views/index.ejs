@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To show the titles</title>
+    <title>Hotel Listings</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div class="listing-page">
+    <div class="listing-header">
+      <h1 class="page-title">🏨 All Hotel Listings</h1>
+      <p class="page-subtitle">Discover amazing places to stay</p>
+    </div>
 
-  <h3 class="heading">All the Listings</h3>
-
-  <ul class="listing-container">
-    <% listings.forEach(listing => { %>
-      <li class="card">
-        <a href="/listings/<%= listing._id %>"><h4 class="title"><%= listing.title %></h4></a>
-      </li>
-    <% }) %>
-  </ul>
-
-</div>
+    <ul class="listings-grid">
+      <% listings.forEach(listing => { %>
+        <li class="listing-card">
+          <a href="/listings/<%= listing._id %>" class="card-link">
+            <div class="card-wrapper">
+              <img src="<%= listing.image.url %>" alt="<%= listing.title %>" class="card-image">
+              <div class="card-body">
+                <h3 class="card-title"><%= listing.title %></h3>
+                <p class="card-location">📍 <%= listing.location %></p>
+                <div class="card-footer">
+                  <span class="card-price">$<%= listing.price %>/night</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
 </body>
 </html>
