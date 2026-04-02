@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To show the titles</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="listing-page">
+
+  <h3 class="heading">All the Listings</h3>
+
+  <ul class="listing-container">
+    <% listings.forEach(listing => { %>
+      <li class="card">
+        <a href="/listings/<%= listing._id %>"><h4 class="title"><%= listing.title %></h4></a>
+      </li>
+    <% }) %>
+  </ul>
+
+</div>
+</body>
+</html>

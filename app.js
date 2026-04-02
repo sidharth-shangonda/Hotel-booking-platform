@@ -16,6 +16,9 @@ async function main() {
 
 app.set("view engine","ejs");
 app.use(express.static("public"));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
 app.get("/",(req,res)=>{
     res.send("server is running");
 });
@@ -30,6 +33,16 @@ app.get("/testListing" ,async (req,res)=> {
     });
     await SampleListing.save();
     res.send("Listing saved to database");
+})
+
+app.get("/listings",async(req,res)=> {
+  let listings=await Listing.find({});
+  res.render("index.ejs",{listings:listings});
+})
+
+app.get("/listings/:id",async(req,res)=> {
+  let listing=await Listing.findById(req.params.id);
+  res.render("show.ejs",{listing:listing});
 })
 
 const port=3000;

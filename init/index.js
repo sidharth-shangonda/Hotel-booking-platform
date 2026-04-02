@@ -12,9 +12,9 @@ async function main() {
 
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
-const initData= async () => {
+const initD= async () => {
     await Listing.deleteMany({});
     await Listing.insertMany(initData.data);
     console.log("Database initialized with sample data");
 }
-initData();
+initD();
